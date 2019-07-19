@@ -168,9 +168,10 @@
     // 7. sort Exercise
     // Sort the people alphabetically by last name
       const alpha = people.sort((lastOne, nextOne) => {
-        console.log(lastOne.split(' '));
+        // console.log(lastOne.split(' '));
         const [aLast,aFirst] = lastOne.split(', ');
         const [bLast,bFirst] = nextOne.split(', ');
+        // console.log(nextOne);
         return aLast > bLast ? 1 : -1;
       });
       console.log(alpha);
