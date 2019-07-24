@@ -9,16 +9,18 @@
 <script>
   const pressed = [];
   const secredCode = 'wesbos';
-  window.addEventListener('keyup', (e) => {
+  function show(e){
     console.log(e.key);
     pressed.push(e.key);
     pressed.splice(-secredCode.length - 1, pressed.length - secredCode.length);
+    //pressed.splice(-6-1,2-6)=> (-7,-4)
     if (pressed.join('').includes(secredCode)){
       console.log('DING DING');
       cornify_add();
     }
     console.log(pressed);
-  })
+  };
+  window.addEventListener('keyup', show);
 </script>
 </body>
 </html>

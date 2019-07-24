@@ -26,6 +26,7 @@ function updateButton() {
 }
 
 function skip(){
+    //dataset- js Zugang zu data attr.in html
 console.log(this.dataset.skip);
 /* do aktualnego czasu dodaje czas ze skipu, zmieniajac go ze stringa w liczbe poprzez parseFloat */
 video.currentTime += parseFloat(this.dataset.skip);
@@ -64,10 +65,11 @@ let mousedown = false;
 progress.addEventListener('click',scrub);
 /* progress.addEventListener('mousemove',() => {
     if(mousedown){
-        scrub();
+        scrub(e);
+        handleProgress()
     }
 }); */
 //jesli nie podamy ,,e,, nizej to przesuwanie nie nie bedzie dzialac, poniewaz nasza funkcja scrub ma (e) i musimy go podac
-progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e) && handleProgress());
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
