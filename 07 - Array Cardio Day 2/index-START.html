@@ -59,9 +59,7 @@
     // });
 
     const isAdult = people.some(person => ((new Date().getFullYear()) - person.year >= 19));
-    console.log({
-      isAdult
-    });
+    console.log({a:isAdult});
 
 
     // Array.prototype.every() // is everyone 19 or older?
@@ -89,7 +87,8 @@
     // const newComments = [
     // ...comments.slice(comment, 1),
     // ...comments.slice(2)];
-
+//slice eine Möglichkeit 
+//array sprading
     const newComments = [
       ...comments.slice(0, thisId),
       ...comments.slice(thisId +1)
