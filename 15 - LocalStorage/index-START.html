@@ -33,10 +33,14 @@
   function addItem(e){
     e.preventDefault(); // stops page reload after submit was clicked on form
 
+    const text = this.querySelector('input[name=item]').value;
+    console.log(text);
     const item = {
-      text: 'Item Name',
+      //text 
+      text: text,
       done: false
     }
+    
     console.log(item);
   }
 
