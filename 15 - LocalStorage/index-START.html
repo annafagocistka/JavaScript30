@@ -30,6 +30,17 @@
   const itemsList = document.querySelector('.plates');
   const items = [];
 
+  function addItem(e){
+    e.preventDefault(); // stops page reload after submit was clicked on form
+
+    const item = {
+      text: 'Item Name',
+      done: false
+    }
+    console.log(item);
+  }
+
+  addItems.addEventListener('submit', addItem);
 </script>
 
 
