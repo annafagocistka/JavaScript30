@@ -28,50 +28,9 @@
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const itemsArray = JSON.parse(localStorage.getItem('items')) || [];
-
-  function addItem(e){
-    e.preventDefault(); // stops page reload after submit was clicked on form
-    const text = this.querySelector('input[name=item]').value;
-    const item = {
-      //statt ,,text:text,, schreiben wir nur ,,text,,- ES6
-      text: text,
-      done: false
-    };
-    console.log(item);
-    itemsArray.push(item);
-    populateList(itemsArray, itemsList);// ich defieniere die Werte
-    localStorage.setItem('items', JSON.stringify(itemsArray));
-    this.reset(); // clears the input field
-  };
-
-  function populateList(plates = [], platesList) { //hier gebe ich die Argumente ein die ich in der Function body verwenden möchte
-    platesList.innerHTML = plates.map((plate, i) => { //plate ist den ganzen item obiekt( Zeile 36)
-      return `
-        <li>
-          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : '' }/>
-          <label for="item${i}">${plate.text}</label>
-        </li>
-      `;
-    }).join('');
-  };
-
-  function toggleDone(e) {
-    if(!e.target.matches('input')) return; // skip this unless it's an input
-    const el = e.target;
-    console.log(el.dataset.index);
-    const index = el.dataset.index;
-    itemsArray[index].done = !itemsArray[index].done;
-    localStorage.setItem('items', JSON.stringify(itemsArray));
-  }
-
-  addItems.addEventListener('submit', addItem);
-  itemsList.addEventListener('click', toggleDone);
-  populateList(itemsArray, itemsList);
-
+  const items = [];
 </script>
 
 
 </body>
 </html>
-
