@@ -64,9 +64,14 @@
 
     function handleUpdate() {
       console.log(this.value);
-      console.log(this.getPropertyValue);
+      // console.log(this);
+      const suffix = this.dataset.sizing || ''; // if there is no sizing(by color) we put: || '', if we don't do this it will come undifined
+      // console.log(this.name); // so we know which input we changed(base,blur,spacing)
+      document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix); 
+      /* document.documentElement - bo stylujemy caly html. warum kann man img nicht machen? und stylen? */
     }
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
 </body>
