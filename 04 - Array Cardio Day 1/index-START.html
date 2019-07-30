@@ -125,9 +125,10 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    // total jest liczba ktora nam wyszla ostatnim razem - za pierwszym razem jest to 0. dlatego tutaj total nie dodajemy, bo to jest juz jakby policzone
     const totalYears = inventors.reduce((total, inventor) => {
       return total + (inventor.passed - inventor.year);
-    }, 0);
+    },0);
 
 
     let total = 0;
