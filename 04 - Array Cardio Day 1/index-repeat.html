@@ -108,7 +108,11 @@
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    const ordered = inventors.sort((a, b) => a > b ? -1 : 1);
+    const ordered = inventors.sort(({
+      year: a
+    }, {
+      year: b
+    }) => a > b ? -1 : 1);
     console.table(ordered);
 
 
@@ -135,21 +139,45 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-      console.clear();
-      const category = document.querySelector('.mw-category');
-      const links = Array.from(category.querySelectorAll('a'));
-      // const de = links.textContent-warum kann man es nicht machen?
-      const deg = links
-                      .map(link => link.textContent)
-                      .filter(link => link.includes('de')); // here you don't need put textContent again!!!
-     
+    // console.clear();
+    // const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // // const de = links.textContent-warum kann man es nicht machen?
+    // const deg = links
+    //   .map(link => link.textContent)
+    //   .filter(link => link.includes('de')); // here you don't need put textContent again!!!
+
+
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    console.clear();
+    const alphabetically = people.sort((lastOne, nextOne) => {
+      // console.log(lastOne); // koniecznie sprawdzamy co to jest lastOne
+      // const parts = lastOne.split(','); // zamieniamy string w tablice
+      // console.log(parts); // wyszla tablica z imionami
+      //ale najlepiej jest to jeszcze podzielic:
+      const [aLast, aFirst] = lastOne.split(','); // wyszla lista stringow
+      console.log(aLast, aFirst);
+      const [bLast, bFirst] = nextOne.split(',');
+      return aLast > bLast ? 1 : -1;
+    });
+    console.log(alphabetically);
+
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car',
       'truck'
     ];
+    const transportation = data.reduce((carry, key) => {
+      console.log(key);
+      if (!carry[key]) { // jesli nie ma jeszcze tego obiektu(carry-ile przenosi), 
+        carry[key] = 0; // to na poczatku jest 0-bo go nie ma, a trzeba miec liczbe wyjsciowa
+      }
+      carry[key]++;
+      return carry;
+    }, {});
+    console.log(transportation);
   </script>
 </body>
 
