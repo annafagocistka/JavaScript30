@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Videos</title>
 </head>
+
 <body>
   <ul class="videos">
     <li data-time="5:43">
@@ -177,11 +179,35 @@
     <li data-time="1:56">
       Video 57
     </li>
-    <li data-time="4:04">
+    <li data-time="4:05">
       Video 58
     </li>
   </ul>
-<script>
-</script>
+  <script>
+    const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+    console.log(timeNodes);
+
+    const seconds = timeNodes
+      .map(node => node.dataset.time) // getting the time
+      .map(timeCode => {
+        const [mins, secs] = timeCode.split(':').map(
+          parseFloat); // getting min and sec(destructuring), then getting the numbers from string
+        console.log(mins, secs);
+        return (mins * 60) + secs; // getting amount of seconds of every video
+      })
+      .reduce((carry, vidSeconds) => carry + vidSeconds); // seconds of all videos together
+
+    let secondsLeft = seconds;
+    const hours = Math.floor(secondsLeft / 3600); // smarties history ;) - how many hole hours left
+    secondsLeft = seconds % 3600; // modulo - the rest of divided - how many seconds left after
+    console.log(seconds);
+    console.log(secondsLeft);
+
+    const mins = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60;
+
+    console.log(hours, mins, secondsLeft);
+  </script>
 </body>
+
 </html>
