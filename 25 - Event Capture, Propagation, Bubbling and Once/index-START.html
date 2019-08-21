@@ -40,9 +40,26 @@
   }
 </style>
 
-<button></button>
+<button style="background-color: black; height: 30px; width: 50px"></button>
 <script>
+ const divs = document.querySelectorAll('div');
+ const button = document.querySelector('button');
 
+ function logText(e) {
+  //  e.stopPropagation(); // stops bubbling event up. will not trigger events on parents but only on the element you clicked
+   console.log(this.classList.value); // when you click on ,,tree,, it will show ,,one,,because of capture:true
+ }
+
+ divs.forEach(div => div.addEventListener('click', logText, {
+   capture: false,  //when is true, starts conjunction on your way down, normally is way up
+   once: true // will listen for click only once and then anymore
+   }));
+
+   button.addEventListener('click',() =>{
+    console.log('click');
+   },{
+     once: true
+   });
 </script>
 </body>
 </html>
