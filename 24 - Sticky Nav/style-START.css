@@ -24,6 +24,9 @@ body {
   transform: scale(0.98);
   transition: transform 0.5s;
 }
+.fixed-nav .site-wrap {
+  transform: scale(1);
+}
 
 header {
   text-align: center;
@@ -50,6 +53,12 @@ nav {
   z-index: 1;
 }
 
+.fixed-nav nav{
+  position: fixed;
+  box-shadow:  0 5px red;
+}
+
+
 nav ul {
   margin: 0;
   padding:0;
@@ -66,12 +75,17 @@ nav li {
 }
 
 li.logo {
-  max-width: 0;
+  /* only with width:0 transition could not work that is why is max-width:0 */
+  max-width: 0; 
   overflow: hidden;
   background: white;
   transition: all .5s;
   font-weight: 600;
   font-size: 30px;
+}
+.fixed-nav li.logo{
+  /* the same like up */
+  max-width: 500px;
 }
 
 li.logo a {
