@@ -46,7 +46,8 @@
       isDown = true;
       slider.classList.add('active');
       // console.log(e.pageX);
-      startX = e.pageX - slider.offsetLeft; //-slider.offsetLeft: if there would be the margin - to make sure that result it is right
+      startX = e.pageX - slider
+      .offsetLeft; //-slider.offsetLeft: if there would be the margin - to make sure that result it is right
       // console.log(startX);
       scrollLeft = slider.scrollLeft;
     });
@@ -68,8 +69,9 @@
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
       // console.log({x, startX});
-      const walk = x - startX; // how far we walked from the first point we moused down
+      const walk = (x - startX) + 3; // how far we walked from the first point we moused down
       console.log(walk);
+      slider.scrollLeft = scrollLeft - walk;
     });
   </script>
 
