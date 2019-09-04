@@ -196,14 +196,15 @@
         return (mins * 60) + secs; // getting amount of seconds of every video
       })
       .reduce((carry, vidSeconds) => carry + vidSeconds); // seconds of all videos together
-
+    console.log('seconds of all videos:', seconds);
     let secondsLeft = seconds;
-    const hours = Math.floor(secondsLeft / 3600); // smarties history ;) - how many hole hours left
-    secondsLeft = seconds % 3600; // modulo - the rest of divided - how many seconds left after
-    console.log(seconds);
-    console.log(secondsLeft);
+    const hours = Math.floor(secondsLeft / 3600); // smarties history ;) - how many whole hours left
+    console.log('hours:', hours);
+    secondsLeft = seconds % 3600; // modulo - the rest of divided - how many seconds left after hours were counted
+    console.log('secondsLeft after hours were counted:', secondsLeft);
 
     const mins = Math.floor(secondsLeft / 60);
+    console.log('mins:', mins);
     secondsLeft = secondsLeft % 60;
 
     console.log(hours, mins, secondsLeft);
