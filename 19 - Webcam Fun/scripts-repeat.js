@@ -57,7 +57,7 @@
       snap.play();
 
       //take the data out of the canvas
-      const data = canvas.toDataURL('image/jped');
+      const data = canvas.toDataURL('image/jpeg');
       //   console.log(data);
       const link = document.createElement('a');
       link.href = data;
